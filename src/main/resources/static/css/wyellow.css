@@ -1,0 +1,65 @@
+﻿@charset "utf-8";
+
+
+
+
+.bx-wrapper .bx-pager.bx-default-pager a.active{    border-color: #F5B834;background-color: #F5B834;}
+
+#online_open:hover{border-color: #f5b834;background-color: #f5b834;}
+#olx_head, #online_open{background-color: #f5b834;}
+#online_open{border-color: #f5b834;}
+.agent-pc .imagelink .bx-wrapper .bx-controls-direction a:hover i{color: #f5b834;}
+
+
+#header .nav>li>a:before{background-color: #f5b834;}
+#sitecontent #topSlider .bx-wrapper .bx-controls-direction a:hover{background-color: #f5b834;}
+#sitecontent .container_category a.active, #sitecontent .container_category a:hover{background-color: #f5b834;}
+.agent-pc .project .item_block:hover .item_wrapper{background-color: #f5b834;}
+.agent-pc #indexPage .project .more:after{background-color: #f5b834;}
+
+#indexPage #topSlider .bx-wrapper .bx-pager a.active div.mask{background-color: #f5b834;}
+#indexPage #topSlider .bx-wrapper .bx-pager a.active div.progress{background-color: #f5b834;border-color: #f5b834;}
+.agent-pc #indexPage .news .item_block:hover .title{color: #f5b834;}
+.agent-pc #indexPage .news .more:after{background-color: #f5b834;}
+.agent-pc .mcustomize .contentbody .description a:hover{border-color: #f5b834;background-color: #f5b834;}
+.agent-pc #indexPage .mlist.team_tabs .tab_button li.active, .agent-pc #indexPage .mlist.team_tabs .tab_button li:hover{background-color: #f5b834;}
+.agent-pc .service .item_block:hover .title{color: #f5b834;}
+.agent-pc .service .item_block:hover a.details i{background-color: #f5b834;}
+.agent-pc #indexPage .service .more:after{background-color: #f5b834;}
+#olx_head, #online_open{background-color: #f5b834;}
+.agent-pc #contactform p .inputtxt.submit:hover{background-color: #f5b834;border-color: #f5b834;}
+
+
+.agent-pc .npagePage .container_target a:last-child{color: #f5b834;}
+.agent-pc .npagePage.post .mlist.team_tabs .tab_button li.active .item_img:after{border-color: #f5b834;}
+
+.agent-pc .service .item_block:hover .title{color: #f5b834;}
+.agent-pc .service .item_block:hover .details{border-color: #f5b834;}
+.agent-pc .service .item_block:hover a.details i{color: #f5b834;}
+.bx-wrapper .bx-controls-direction a:hover{background-color: #f5b834;}
+.agent-pc .npagePage .service .item_info:after{background-color: #f5b834;}
+#header .nav .subnav li a.active, #header .nav .subnav li a:hover{color: #f5b834;}
+.agent-pc .npagePage .news .item_block:hover .title{color: #f5b834;}
+.agent-pc .npagePage .news .item_block:hover a.details{ border-color: #f5b834;}
+.agent-pc .npagePage .news .item_block:hover a.details i::before{color: #f5b834;}
+
+#sitecontent .npagePage.post .item_tags a:hover{background-color: #f5b834;}
+.agent-pc #sitecontent .npagePage.post #postContent .navlist li:hover .title{color: #f5b834;}
+#olx_qq li a:hover i{color: #f5b834}
+.agent-pc .npagePage.post a.active .title, .agent-pc .npagePage.post a:hover .title{color: #f5b834;}
+#pages a:hover{background-color: #f5b834;}
+
+
+
+
+.agent-mobile #online a i{color: #f0af22;}
+.agent-mobile #sitecontent .news #listContent .item_block:hover .title{color: #f0af22;}
+
+::-webkit-scrollbar {
+background-color:#f5b834;
+width:5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color:#f5b834;
+}
