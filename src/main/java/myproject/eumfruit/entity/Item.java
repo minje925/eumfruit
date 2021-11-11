@@ -25,6 +25,10 @@ public class Item {
     @Column(name="price", nullable = false)
     private int price; //가격
 
+    private String country; // 원산지
+
+    private String kind; // 종류
+
     @Column(nullable = false)
     private int stockNumber; //재고수량
 

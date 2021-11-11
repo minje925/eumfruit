@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow">
+<head th:replace="fragments/header::header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block layout:fragment="script"></th:block>
+    <th:block layout:fragment="css"></th:block>
+</head>
+<body>
+    <div th:replace="fragments/nav :: fragment-nav"></div>
+    <div layout:fragment="content" style="padding-top: 100px;">
+
+
+    </div>
+
+    <div th:replace="fragments/footer::footer"></div>
+</body>
+</html>
