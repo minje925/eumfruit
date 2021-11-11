@@ -40,7 +40,7 @@ public class Member {
         member.setAddress(memberForm.getAddress());
         String password = passwordEncoder.encode(memberForm.getPassword());
         member.setPassword(password);
-        member.setRole(Role.USER);
+        member.setRole(Role.ADMIN);
         return member;
     }
 }
