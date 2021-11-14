@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name="member")
 @Getter @Setter
 @ToString
-public class Member {
+public class Member extends BaseEntity {    // BaseEntity를 상속받아 회원엔티티 저장시 자동으로 등록자, 수정자, 등록시간, 수정시간이 저장된다.
 
     @Id
     @Column(name="member_id")
