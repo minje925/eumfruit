@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9' // ModelMapper 란 서로 다른 object 간의 필드 값을 자동으로 mapping 해주는 library, 반복적인 object 간 변환을 간단하게 줄이고 싶을 때 ModelMapper 를 사용할 수 있다
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	compileOnly 'org.projectlombok:lombok'
 	//runtimeOnly 'com.h2database:h2'
