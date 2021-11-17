@@ -4,93 +4,65 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div th:fragment="fragment-nav">
-  <div id="header">
-        <div class="wrapper">
-          <div class="content">
-            <div id="headTop"> <a href="/" id="logo"> <img src="/picture/logo.png" height="44" /></a>
-              <div id="hcontact" class="fr"> <i class="fa fa-phone"></i>
-                <p>010-8456-2521 <br />
-                  <a href="mailto:admin@admin.com">alswp25@gmail.com</a></p>
-              </div>
-              <div id="openBtn" class="fl btn">
-                <div class="lcbody">
-                  <div class="lcitem top">
-                    <div class="rect top"></div>
-                  </div>
-                  <div class="lcitem bottom">
-                    <div class="rect bottom"></div>
-                  </div>
-                </div>
-              </div>
+  <div class="py-1 bg-primary">
+    <div class="container">
+      <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+        <div class="col-lg-12 d-block">
+          <div class="row d-flex">
+            <div class="col-md pr-4 d-flex topper align-items-center">
+              <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+              <span class="text">+ 010-6563-2521</span>
             </div>
-
-            <div id="navWrapper">
-              <div class="content">
-                <p class="search_but" style="display:none"> <i class="fa fa-search" aria-hidden="true"></i> </p>
-                <ul class="nav movedx" data-movedx-mid="1">
-                  <li class="navitem"><a   href="index.html" target="_self"> <span data-title="제품">제품</span></a></li>
-                  <li class="navitem"> <a class='' href="news.html"><span data-title="소식">소식</span>  <i class="fa fa-angle-down"></i>  </a>
-                    <ul class="subnav">
-                      <li><a href="news.html" target="_self">회사뉴스</a></li>
-                      <li><a href="news.html" target="_self">산업정보</a></li>
-                    </ul>
-                  </li>
-
-                  <li class="navitem"> <a class='active' href="prolist.html"><span data-title="제품센터">제품센터</span>  <i class="fa fa-angle-down"></i> </a>
-                    <ul class="subnav">
-                      <li><a href="prolist.html" target="_self">제품센터1</a></li>
-                      <li><a href="prolist.html" target="_self">제품센터2</a></li>
-                      <li><a href="prolist.html" target="_self">제품센터3</a></li>
-                      <li><a href="prolist.html" target="_self">제품센터4</a></li>
-                      <li><a href="prolist.html" target="_self">제품센터5</a></li>
-                    </ul>
-                  </li>
-
-                  <li class="navitem"> <a class='' href="activity.html"><span data-title="이벤트">이벤트</span>  <i class="fa fa-angle-down"></i> </a>
-                    <ul class="subnav">
-                      <li><a href="activity.html" target="_self">제품케이스</a></li>
-                      <li><a href="activity.html" target="_self">고객사례</a></li>
-                    </ul>
-                  </li>
-
-                  <li class="navitem"> <a class=''  href="contact.html"><span data-title="About">정보</span>   <i class="fa fa-angle-down"></i> </a>
-                    <ul class="subnav">
-                      <li><a href="Customized.html" target="_self">About us</a></li>
-                      <li><a href="Customized.html" target="_self">Private custom</a></li>
-                    </ul>
-                  </li>
-
-                  <li class="navitem" sec:authorize="isAnonymous"> <a class='' href="/members/login"><span data-title="Login">로그인</span>  </a></li>
-
-                  <li class="navitem" sec:authorize="isAuthenticated()"> <a class=''  href="/members/logout"><span data-title="Logout">로그아웃</span>  </a></li>
-
-                  <li class="navitem" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"> <a class=''  href=""><span data-title="Admin">관리자메뉴</span>  <i class="fa fa-angle-down"></i>  </a>
-                    <ul class="subnav">
-                      <li><a href="/admin/item/new" target="_self">상품등록</a></li>
-                      <li><a href="" target="_self">상품관리</a></li>
-                    </ul>
-                  </li>
-
-                </ul>
-              </div>
-
+            <div class="col-md pr-4 d-flex topper align-items-center">
+              <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+              <span class="text">alswp25@email.com</span>
+            </div>
+            <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+              <span class="text">3-5 Business days delivery &amp; Free Returns</span>
             </div>
           </div>
         </div>
-
-        <div class="clear"></div>
-        <div id="search" style="display:none">
-          <div class="s_content">
-            <form action="/plus/search.php" method="get" onsubmit="return checksearch(this)">
-              <div class="s_wrapper">
-                <p class="s_submit"> <i class="fa fa-search" aria-hidden="true"></i> </p>
-                <input name="q" type="text" aria-label="搜索" placeholder="搜索" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false">
-                <p class="s_close"> <i class="fa fa-times" aria-hidden="true"></i> </p>
-              </div>
-            </form>
-          </div>
-        </div>
+      </div>
+    </div>
   </div>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img class="img-fluid" src="/images/eum_logo3.jpeg" alt="Colorlib Template"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a class="dropdown-item" href="shop.html">Shop</a>
+              <a class="dropdown-item" href="wishlist.html">Wishlist</a>
+              <a class="dropdown-item" href="product-single.html">Single Product</a>
+              <a class="dropdown-item" href="cart.html">Cart</a>
+              <a class="dropdown-item" href="checkout.html">Checkout</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item" sec:authorize="isAnonymous"><a href="/members/login" class="nav-link">Login</a></li>
+          <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/members/logout" class="nav-link">Logout</a></li>
+          <li class="nav-item dropdown" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pruduct(admin)</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown05">
+              <a class="dropdown-item" href="/admin/item/new">상품등록</a>
+              <a class="dropdown-item" href="/">상품관리</a>
+            </div>
+          </li>
+          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 
 </html>

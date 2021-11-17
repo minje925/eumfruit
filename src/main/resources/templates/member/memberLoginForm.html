@@ -9,63 +9,58 @@
 </head>
 
 <div layout:fragment="content">
-    <div class="npagePage pageEditor" id="page_contact">
-<div class="mpageEditor module">
-    <div class="module_container">
-        <div class="container_header wow"> <p class="title">로그인</p>
-            <p class="subtitle">Login</p>
-        </div>
-        <div class="container_content" style="text-align: center">
-            <div class="content_wrapper">
-                <div class="postbody">
-                    <div id="mcontact" class="module" style=" ">
-                        <div class="module_container">
-                            <div class="container_content">
-                                <div class="content_wrapper">
-                                    <div id="contactlist">
-                                        <div id="contactinfo" class="wow" style="margin-left:20%;">
-                                            <p class="ellipsis">
-                                                주소：대구광역시 수성구 xx길 xx</p>
-                                            <p class="ellipsis">
-                                                우편번호：xxx-xx</p>
-                                            <p class="ellipsis">
-                                                휴대전화：010-8456-2521</p>
-                                            <p class="ellipsis">
-                                                이메일：alswp25@gmail.com</p>
-
-                                            <div> <a class="fl" target="_blank" href="http://www.naver.com"> <i class="fa fa-weibo"></i> </a> <a class="fl" target="_blank" href="/"> <i class="fa fa-qq"></i> </a> <a id="mpbtn" class="fl" target="_blank"> <i class="fa fa-weixin"></i> </a> </div>
-                                        </div>
-                                        <div id="contactform" class="wow">
-                                            <form role="form" action="/members/login" method="post">
-                                                <p>
-                                                    <input type="email" class="inputtxt" name="email" placeholder="이메일을 입력하세요." autocomplete="off" />
-                                                </p>
-                                                <p>
-                                                    <input type="password" class="inputtxt" name="password" placeholder="비밀번호를 입력하세요." autocomplete="off">
-                                                </p>
-                                                <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-                                                <p>
-                                                    <input class="inputtxt submit bookadd" type="submit" value="로그인" />
-                                                </p>
-                                                <p>
-                                                    <input class="inputtxt submit bookadd" type="button" onClick="location.href='/members/new'" value="회원가입" />
-                                                </p>
-                                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                                            </form>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <section class="ftco-section contact-section bg-light">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info">
+                <div class="w-100"></div>
+                <div class="col-md-3 d-flex">
+                    <div class="info bg-white p-4">
+                        <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
                     </div>
-                    </p>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="info bg-white p-4">
+                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="info bg-white p-4">
+                        <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="info bg-white p-4">
+                        <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                    </div>
                 </div>
             </div>
+            <div class ="row justify-content-center">
+            <div class ="col-xl-5">
+                <div class="cart-detail p-1 p-md-1">
+                    <form action="/members/login" role="form" method="post" class="bg-white p-5 contact-form">
+<!--                        <h1 class ="mb-4 billing-heading"><b>로그인</b></h1>-->
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" name="email" placeholder="아이디를 입력하세요.">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요.">
+                        </div>
+                        <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+                        <div class="form-group">
+                            <input type="submit" value="로그인" class="btn btn-primary py-3 px-5">
+                        </div>
+                        <div class="form-group">
+                            <input value="회원가입" type="button" class="btn btn-primary py-3 px-5" onClick="location.href='/members/new'">
+                        </div>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    </form>
+                </div>
+            </div>
+            </div>
         </div>
-    </div>
-</div>
-</div>
+    </section>
 </div>
 
 </html>
