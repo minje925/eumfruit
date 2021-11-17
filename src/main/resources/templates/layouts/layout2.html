@@ -8,8 +8,15 @@
     <th:block layout:fragment="css"></th:block>
 </head>
 <body class = "goto-here">
-<div th:replace="fragments/nav :: fragment-nav"></div>
-<div layout:fragment="content"></div>
-<div th:replace="fragments/footer::footer"></div>
+    <div th:replace="fragments/nav :: fragment-nav"></div>
+    <div layout:fragment="content"></div>
+    <div th:replace="fragments/footer::footer"></div>
+    <div style="position: fixed; right: 10px; bottom: 10px">
+        <div>
+            <a href="http://instagram.com/eum_fruit/"><img src="/images/instagram.png" width="50px" height="50px"></a>
+            <a href="http://band.us/@eumfruit"><img src="/images/naverband.png" width="50px" height="50px"></a>
+            <a href="#"><img src="/images/kakaotalk.png" width="50px" height="50px"></a>
+        </div>
+    </div>
 </body>
 </html>
