@@ -8,6 +8,6 @@ public class PopupController {
 
     @GetMapping(value = "/popup")
     public String popup() {
-        return "popup";
+        return "/popup";
     }
 }
