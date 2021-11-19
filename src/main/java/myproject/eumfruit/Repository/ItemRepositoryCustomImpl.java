@@ -3,10 +3,14 @@ package myproject.eumfruit.Repository;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.constant.ItemSellStatus;
 import myproject.eumfruit.dto.ItemSearchDto;
+import myproject.eumfruit.dto.ProductItemDto;
+import myproject.eumfruit.dto.QProductItemDto;
 import myproject.eumfruit.entity.Item;
 import myproject.eumfruit.entity.QItem;
+import myproject.eumfruit.entity.QItemimg;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -84,5 +88,29 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
         long total = results.getTotal();
         return new PageImpl<>(content, pageable, total);
+    }
+
+    @Override
+    public List<ProductItemDto> getProductItemList(ItemKind itemKind) {
+        QItem item = QItem.item;
+        QItemimg itemImg = QItemimg.itemimg;
+
+        QueryResults<ProductItemDto> results = queryFactory
+                .select(
+                        new QProductItemDto(
+                                item.id,
+                                item.itemNm,
+                                item.itemDetail,
+                                itemImg.imgUrl,
+                                item.price)
+                )
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"))
+                .where(item.itemKind.eq(itemKind))
+                .fetchResults();
+
+        List<ProductItemDto> content = results.getResults();
+        return content;
     }
 }

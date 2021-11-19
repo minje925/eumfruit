@@ -1,11 +1,14 @@
 package myproject.eumfruit.Repository;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
@@ -27,5 +30,8 @@ public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredi
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 
     List<Item> findAll();
+
+    List<Item> findByItemKind(ItemKind itemKind);   // 상품의 종류로 찾기.
+
 
 }

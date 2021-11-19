@@ -1,15 +1,12 @@
 package myproject.eumfruit.Controller;
 
 import lombok.RequiredArgsConstructor;
-import myproject.eumfruit.Repository.ItemRepository;
+import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.dto.ItemFormDto;
 import myproject.eumfruit.dto.ItemSearchDto;
+import myproject.eumfruit.dto.ProductItemDto;
 import myproject.eumfruit.entity.Item;
 import myproject.eumfruit.service.ItemService;
-import org.dom4j.rule.Mode;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,6 +30,19 @@ public class ItemController {
     public String itemForm(Model model) {
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "/item/itemForm";
+    }
+
+    @GetMapping(value="/item/product")
+    public String totalProduct() {
+//        List<Item> items = itemService.getItemByKind(ItemKind.SET);// 과일세트 페이지이기 때문에 SET으로 목록을 가져온다.
+//        for(int i = 0; i<items.size(); i++) {
+//            System.out.println("가져온 상품 : "+items.get(i));
+//        }
+        List<ProductItemDto> items2 = itemService.getProductItemList(ItemKind.SET);
+        for(int i = 0; i < items2.size(); i++) {
+            System.out.println("가져온 상품 : "+items2.get(i).getItemNm()+", "+items2.get(i).getPrice()+", "+items2.get(i).getImgUrl());
+        }
+        return "/item/product";
     }
 
     @PostMapping(value = "/admin/item/new")

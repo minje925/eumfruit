@@ -3,9 +3,11 @@ package myproject.eumfruit.service;
 import lombok.RequiredArgsConstructor;
 import myproject.eumfruit.Repository.ItemImgRepository;
 import myproject.eumfruit.Repository.ItemRepository;
+import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.dto.ItemFormDto;
 import myproject.eumfruit.dto.ItemImgDto;
 import myproject.eumfruit.dto.ItemSearchDto;
+import myproject.eumfruit.dto.ProductItemDto;
 import myproject.eumfruit.entity.Item;
 import myproject.eumfruit.entity.Itemimg;
 import org.springframework.data.domain.Page;
@@ -82,7 +84,17 @@ public class ItemService {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 
+    // 상품의 종류로 상품목록 가져오기
+    @Transactional(readOnly = true)
+    public List<Item> getItemByKind(ItemKind itemKind) {
+        return itemRepository.findByItemKind(itemKind);
+    }
+
     public List<Item> findAll() {
         return itemRepository.findAll();
+    }
+
+    public List<ProductItemDto> getProductItemList(ItemKind itemKind){
+        return itemRepository.getProductItemList(itemKind);
     }
 }

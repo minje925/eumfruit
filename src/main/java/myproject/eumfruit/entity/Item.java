@@ -3,6 +3,7 @@ package myproject.eumfruit.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.constant.ItemSellStatus;
 import myproject.eumfruit.dto.ItemFormDto;
 
@@ -28,7 +29,8 @@ public class Item extends BaseEntity {
 
     private String country; // 원산지
 
-    private String kind; // 종류
+    @Enumerated(EnumType.STRING)
+    private ItemKind itemKind; // 종류, 선물이냐 단품이냐
 
     @Column(nullable = false)
     private int stockNumber; //재고수량

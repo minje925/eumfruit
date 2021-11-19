@@ -155,6 +155,19 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>상품종류</label>
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select th:field="*{itemKind}" class="form-control">
+                                                <option value="SET">선물세트</option>
+                                                <option value="SINGLE">단품</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>상품명</label>
                                         <input type="text" th:field="*{itemNm}" class="form-control" placeholder="상품명을 입력해주세요.">
                                     </div>

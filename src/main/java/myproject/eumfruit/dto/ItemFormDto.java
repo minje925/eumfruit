@@ -2,6 +2,7 @@ package myproject.eumfruit.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.constant.ItemSellStatus;
 import myproject.eumfruit.entity.Item;
 import org.modelmapper.ModelMapper;
@@ -29,6 +30,8 @@ public class ItemFormDto {
     private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
+
+    private ItemKind itemKind;
 
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>();    // 상품 저장 후 수정할 때 상품 이미지 정보를 저장하는 리스트
 
