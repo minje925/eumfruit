@@ -33,15 +33,16 @@ public class ItemController {
     }
 
     @GetMapping(value="/item/product")
-    public String totalProduct() {
+    public String totalProduct(Model model) {
 //        List<Item> items = itemService.getItemByKind(ItemKind.SET);// 과일세트 페이지이기 때문에 SET으로 목록을 가져온다.
 //        for(int i = 0; i<items.size(); i++) {
 //            System.out.println("가져온 상품 : "+items.get(i));
 //        }
-        List<ProductItemDto> items2 = itemService.getProductItemList(ItemKind.SET);
-        for(int i = 0; i < items2.size(); i++) {
-            System.out.println("가져온 상품 : "+items2.get(i).getItemNm()+", "+items2.get(i).getPrice()+", "+items2.get(i).getImgUrl());
+        List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SET);
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
         }
+        model.addAttribute("items", items);
         return "/item/product";
     }
 
