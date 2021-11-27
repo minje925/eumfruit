@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow"
+      layout:decorate="~{layouts/layout2}">
+
+<head th:replace="fragments/header::header">
+    <title>Blog 페이지</title>
+</head>
+
+<div layout:fragment="content">
+    <div class="hero-wrap hero-bread" style="background-image: url('/images/eum_slider5.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+
+                <div class="text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/"></a></span> <span><b>블로그</b></span></p>
+                    <h1 class="mb-0 bread">Blog</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section ftco-degree-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" th:each="blog:${blogs}">
+                    <div>
+                        <a th:href="${blog.bloggerlink}"><img th:src="${blog.bloggerlink}"></a>
+                        <h1 th:text="${blog.bloggerlink}"></h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 d-flex">
+                            <div class="blog-entry align-self-stretch d-md-flex">
+                                <a href="blog-single.html" class="block-20" style="background-image: url('${blog.link}');">
+                                </a>
+                                <div class="text d-block pl-md-4">
+                                    <div class="meta mb-3">
+                                        <div><a th:text="${blog.postdate}"></a></div>
+                                        <div><a th:text="${blog.bloggerNm}"></a></div>
+                                        <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                                    </div>
+                                    <b><h3 class="heading" th:text="${blog.title}" th:href="${blog.link}"></h3></b>
+                                    <p th:text="${blog.description}"></p>
+                                    <p><a th:href="${blog.link}" class="btn btn-primary py-2 px-3">블로그 보기</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+</html>

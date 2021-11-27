@@ -21,4 +21,6 @@ public interface ItemRepositoryCustom {
     getAdminItemPage 메소드를 정의한다. 반환 데이터로 Page<item> 객체를 반환한다.
      */
     List<ProductItemDto> getProductItemList(ItemKind itemKind);
+    List<ProductItemDto> getProductItemList();
+    List<ProductItemDto> getProductItemList(ItemKind itemKind, int page);
 }

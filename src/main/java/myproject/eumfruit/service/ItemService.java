@@ -97,4 +97,10 @@ public class ItemService {
     public List<ProductItemDto> getProductItemList(ItemKind itemKind){
         return itemRepository.getProductItemList(itemKind);
     }
+    public List<ProductItemDto> getProductItemList(){
+        return itemRepository.getProductItemList();
+    }
+    public List<ProductItemDto> getProductItemList(ItemKind itemKind, int page){
+        return itemRepository.getProductItemList(itemKind, page);
+    }
 }

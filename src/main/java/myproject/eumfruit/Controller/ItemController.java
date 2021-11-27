@@ -32,18 +32,45 @@ public class ItemController {
         return "/item/itemForm";
     }
 
-    @GetMapping(value="/item/product")
-    public String totalProduct(Model model) {
-//        List<Item> items = itemService.getItemByKind(ItemKind.SET);// 과일세트 페이지이기 때문에 SET으로 목록을 가져온다.
-//        for(int i = 0; i<items.size(); i++) {
-//            System.out.println("가져온 상품 : "+items.get(i));
-//        }
+    @GetMapping(value="/item/product/set")
+    public String setProduct(Model model) {
         List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SET);
         for(int i = 0; i < items.size(); i++) {
             System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
         }
         model.addAttribute("items", items);
+        return "/item/productSet";
+    }
+
+    @GetMapping(value="/item/product/fruits")
+    public String fruitProduct(Model model) {
+        List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SINGLE);
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
+        }
+        model.addAttribute("items", items);
+        return "/item/productFruits";
+    }
+
+    @GetMapping(value="/item/product")
+    public String totalProduct(Model model) {
+        //List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SINGLE);
+        List<ProductItemDto> items = itemService.getProductItemList();
+        for(int i = 0; i < items.size(); i++) {
+            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
+        }
+        model.addAttribute("items", items);
         return "/item/product";
+    }
+
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        List<ProductItemDto> relItems = itemService.getProductItemList(itemFormDto.getItemKind(), 4);
+
+        model.addAttribute("item", itemFormDto);
+        model.addAttribute("relitems", relItems);
+        return "item/itemDtl";
     }
 
     @PostMapping(value = "/admin/item/new")

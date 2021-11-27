@@ -113,4 +113,50 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         List<ProductItemDto> content = results.getResults();
         return content;
     }
+
+    @Override
+    public List<ProductItemDto> getProductItemList() {
+        QItem item = QItem.item;
+        QItemimg itemImg = QItemimg.itemimg;
+
+        QueryResults<ProductItemDto> results = queryFactory
+                .select(
+                        new QProductItemDto(
+                                item.id,
+                                item.itemNm,
+                                item.itemDetail,
+                                itemImg.imgUrl,
+                                item.price)
+                )
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"))
+                .fetchResults();
+        List<ProductItemDto> content = results.getResults();
+        return content;
+    }
+
+    @Override
+    public List<ProductItemDto> getProductItemList(ItemKind itemKind, int page) {
+        QItem item = QItem.item;
+        QItemimg itemImg = QItemimg.itemimg;
+
+        QueryResults<ProductItemDto> results = queryFactory
+                .select(
+                        new QProductItemDto(
+                                item.id,
+                                item.itemNm,
+                                item.itemDetail,
+                                itemImg.imgUrl,
+                                item.price)
+                )
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"))
+                .where(item.itemKind.eq(itemKind))
+                .limit(page)
+                .fetchResults();
+        List<ProductItemDto> content = results.getResults();
+        return content;
+    }
 }

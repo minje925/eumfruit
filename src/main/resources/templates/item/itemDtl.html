@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow"
+      layout:decorate="~{layouts/layout2}">
+
+<head th:replace="fragments/header::header">
+    <title>전체상품 페이지</title>
+</head>
+
+<div layout:fragment="content">
+    <div class="hero-wrap hero-bread" style="background-image: url('/images/eum_totalproduct3.jpeg');">
+        <div class="container">
+
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+
+                <div class="text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Product Product Single</span></p>
+                    <h1 class="mb-0 bread">Product Single</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section">
+        <input type="hidden" id = "itemId" th:value="${item.id}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+<!--                    <a href="images/product-1.jpg" class="image-popup"><img src="images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>-->
+                    <a th:href="${item.itemImgDtoList[0].imgUrl}" class="image-popup"><img class="img-fluid" th:src="${item.itemImgDtoList[0].imgUrl}" alt="Colorlib Template"></a>
+                </div>
+
+                <div class="col-lg-6 product-details pl-md-5">
+                    <b><h3 th:text="${item.itemNm}"></h3></b>
+                    <div class="rating d-flex">
+                        <p class="text-left mr-4">
+                            <a href="#" class="mr-2">5.0</a>
+                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                        </p>
+                        <p class="text-left mr-4">
+                            <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+                        </p>
+                        <p class="text-left">
+                            <a href="#" class="mr-2" style="color: #000;"><span style="color: #bbb;" th:text="${item.itemSellStatus}">판매중</span></a>
+                        </p>
+                    </div>
+                    <p class="price"><span th:text = "${item.price}+원"></span></p>
+                    <p th:text="${item.itemDetail}"></p>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+<!--                            <div class="form-group d-flex">-->
+<!--                                <div class="select-wrap">-->
+<!--                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
+<!--                                    <select name="" id="" class="form-control">-->
+<!--                                        <option value="">Small</option>-->
+<!--                                        <option value="">Medium</option>-->
+<!--                                        <option value="">Large</option>-->
+<!--                                        <option value="">Extra Large</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="input-group col-md-6 d-flex mb-3">
+	             	<span class="input-group-btn mr-2">
+	                	<div class="quantity">수량</div>
+	            		</span>
+                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                            <span class="input-group-btn ml-2">
+	                 </button>
+	             	</span>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-12">
+                          <p style="color: #000;" th:text="${item.stockNumber}+개+' '+주문+' '+가능"></p>
+                        </div>
+                    </div>
+                    <p><a href="cart.html" class="btn btn-black py-3 px-5">장바구니에 담기</a></p>
+                </div>
+            </div>
+        </div>
+
+<!--        <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">-->
+<!--            <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}"-->
+<!--                 th:src="${itemImg.imgUrl}" width="800">-->
+<!--        </div>-->
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-3 pb-3">
+                <div class="col-md-12 heading-section text-center">
+                    <span class="subheading">Related Products</span>
+                    <h2 class="mb-4">관련 상품</h2>
+                    <p>다른 상품도 살펴보세요~ 이쁜 상품들이 많습니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3" th:each="relitem:${relitems}">
+                    <div class="product">
+                        <a th:href="'/item/'+${relitem.id}" class="img-prod"><img class="img-fluid" th:src="${relitem.imgUrl}" alt="Colorlib Template">
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a>Green Beans</a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price" th:text="${relitem.price}+'원'"><span></span></p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+                                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</html>

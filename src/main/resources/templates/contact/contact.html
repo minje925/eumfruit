@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow"
+      layout:decorate="~{layouts/layout2}">
+
+<head th:replace="fragments/header::header">
+    <title>Contact 페이지</title>
+</head>
+
+<div layout:fragment="content">
+    <div class="hero-wrap hero-bread" style="background-image: url('/images/eum_slider5.jpg');">
+        <div class="container">
+
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+
+                <div class="text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/"></a></span> <span><b>오시는길</b></span></p>
+                    <h1 class="mb-0 bread">Contact us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex" style="height:800px">
+                    <div id="map" class="bg-white"></div>
+                </div>
+                <div class="col-md-6 py-5 wrap-about pb-md-5">
+                    <div class="heading-section-bold mb-4 mt-md-5">
+                        <div class="ml-md-0">
+                            <h2 class="mb-4">이음청과 대구 경산 본점 </h2>
+                            <h3 class="mb-4"><b>대구광역시 수성구 사월동 642</b></h3>
+                        </div>
+                    </div>
+                    <div class="pb-md-5">
+                        <p><b>[위치]</b><br>시지한신휴플러스 아파트 정문 맞은편,<br>시지동화아이위시 아파트 1층 상가에 위치</p>
+                        <p><b>[대중교통]</b><br>정평역 1번 출구에서 도보 10분<br>사월역 4번 출구에서 도보 12분</p>
+                        <p><b>[자가용]</b><br>수성IC에서 자가용으로 10분 소요(약 5.2km)<br>사월역 4번 출구에서 도보 12분</p>
+                        <p>주차정보 | 매장 앞 도로변, 상가 옆 주차장 이용</p>
+                        <hr>
+                        <p><b>[이용시간]</b><br>매일 10:00 ~ 10:30 (일요일 예약제)</p>
+                        <hr>
+                        <p><b>[전화번호]</b><br>010-6563-2521</p>
+                        <hr>
+                        <p><b>[이용안내]</b><br>예약, 주차, 포장, 배달, 무선 인터넷, 반려동물 동반, 남/녀 화장실 구분</p>
+                        <hr>
+                        <p>
+                            <b>[사업자정보]</b><br>
+                            <span><b>상호명</b></span>  이음청과<br>
+                            <span><b>대표자</b></span>  최보경<br>
+                            <span><b>사업자번호</b></span>  601-33-65124<br>
+                            <span><b>이메일</b></span>  minhyol5247@naver.com<br>
+                        </p>
+                        <p><a href="#" class="btn btn-primary">Contact</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--    <div>-->
+<!--        <h1>지도!</h1>-->
+<!--    </div>-->
+<!--    <div id="map" style="width: 100%; height:480px;">-->
+    <script type="text/javascript">
+        var mapOptions = {
+            center: new naver.maps.LatLng(35.83655768685876, 128.72236174435199),
+            zoom: 17
+        };
+        var map = new naver.maps.Map('map', mapOptions);
+        var marker = new naver.maps.Marker({
+            map: map,
+            title: "이음청과",
+            position: new naver.maps.LatLng(35.83655768685876, 128.72236174435199)
+        });
+    </script>
+    </div>
+</div>
+</html>
