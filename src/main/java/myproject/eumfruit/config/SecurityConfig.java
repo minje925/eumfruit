@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ; // 로그아웃 성공 시 이동할 url
 
         http.authorizeRequests()    // 시큐리티 처리에 HttpServletRequest를 이용한다
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/fonts/**", "/picture/**","/popup/**", "/contact/**", "/blog/**").permitAll() // permitAll()을 통해 모든 사용자가 인증(로그인)없이 경로에 접근할 수 있도록 설정한다. 메인페이지, 회원관련url, 상품페이지 경로 등이 이에 해당한다.
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/fonts/**", "/picture/**","/popup/**", "/contact/**", "/blog/**","/cafe/**").permitAll() // permitAll()을 통해 모든 사용자가 인증(로그인)없이 경로에 접근할 수 있도록 설정한다. 메인페이지, 회원관련url, 상품페이지 경로 등이 이에 해당한다.
                 .mvcMatchers("/admin/**").hasRole("ADMIN")  // /admin으로 시작하는 경로는 해당 계정이 ADMIN Role일 경우에만 접근가능하도록 설정한다.
                 .anyRequest().authenticated() // 위에서 설정한 경로등은 모두 인증을 요구하도록 설정한다.
         ;

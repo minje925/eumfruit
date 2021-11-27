@@ -3,6 +3,7 @@ package myproject.eumfruit.service;
 import lombok.RequiredArgsConstructor;
 import myproject.eumfruit.constant.ItemKind;
 import myproject.eumfruit.dto.BlogDto;
+import myproject.eumfruit.dto.CafeDto;
 import myproject.eumfruit.dto.ProductItemDto;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -54,9 +55,48 @@ public class BlogService {
                 );
                 results.add(blogDto);
             }
-//            for(int i = 0; i < results.size(); i++) {
-//                System.out.println(results.get(i).getTitle());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return results;
+    }
+
+    public List<CafeDto> getCafeList(String responseBody){
+
+        List<CafeDto> results = new ArrayList<>();
+
+        JSONObject obj;
+        JSONParser parser = new JSONParser();
+
+        try {
+            obj = (JSONObject) parser.parse(responseBody);
+            JSONArray objItems = (JSONArray) obj.get("items");
+
+            for(int i = 0; i < objItems.size(); i++) {
+                JSONObject objItem = (JSONObject) parser.parse(objItems.get(i).toString());
+
+                String title = (String)objItem.get("title");
+                title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");   // 문자열 안에 태그없애기
+
+                String description = (String)objItem.get("description");
+                description = description.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+
+                CafeDto cafeDto = new CafeDto(
+                        title,
+                        description,
+                        (String)objItem.get("cafename"),
+                        (String)objItem.get("diplay"),
+                        (String)objItem.get("link"),
+                        (String)objItem.get("cafeurl")
+                );
+                results.add(cafeDto);
+            }
+//            for(int i =0; i< results.size(); i++) {
+//                System.out.println(results.get(i).getCafeNm());
 //            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

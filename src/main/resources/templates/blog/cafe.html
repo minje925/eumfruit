@@ -14,8 +14,8 @@
             <div class="row no-gutters slider-text align-items-center justify-content-center">
 
                 <div class="text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="/"></a></span> <span><b>블로그</b></span></p>
-                    <h1 class="mb-0 bread">Blog</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/"></a></span> <span><b>카페</b></span></p>
+                    <h1 class="mb-0 bread">Cafe</h1>
                 </div>
             </div>
         </div>
@@ -26,25 +26,26 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
-                        <li><a href="/blog" class="active">Blog</a></li>
-                        <li><a href="/cafe">Cafe</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/cafe" class="active">Cafe</a></li>
                     </ul>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12" th:each="blog:${blogs}">
+                <div class="col-lg-12" th:each="cafe:${cafes}">
                     <div class="row">
                         <div class="col-md-12 d-flex">
                             <div class="blog-entry align-self-stretch d-md-flex">
                                 <div class="text d-block pl-md-4">
                                     <div class="meta mb-3">
-                                        <div><a th:text="${blog.postdate}"></a></div>
-                                        <div><b><a th:text="${blog.bloggerNm}"></a></b></div>
-                                        <div><a href="#" class="meta-chat"><span class="icon-chat"></span></a></div>
+<!--                                        <div><a th:text="${blog.postdate}"></a></div>-->
+                                        <div><b><a th:text="${cafe.cafeNm}"></a></b></div>
+                                        <div><b><a th:text="${cafe.cafelink}"></a></b></div>
+                                        <div><a th:href="${cafe.cafelink}" class="meta-chat"><span class="icon-chat"></span></a></div>
                                     </div>
-                                    <b><h3 class="heading" th:text="${blog.title}" th:href="${blog.link}"></h3></b>
-                                    <p th:text="${blog.description}"></p>
-                                    <p><a th:href="${blog.link}" class="btn btn-primary py-2 px-3">블로그 보기</a></p>
+                                    <b><h3 class="heading" th:text="${cafe.title}" th:href="${cafe.link}"></h3></b>
+                                    <p th:text="${cafe.description}"></p>
+                                    <p><a th:href="${cafe.link}" class="btn btn-primary py-2 px-3">카페 보기</a></p>
                                     <hr>
                                 </div>
                             </div>

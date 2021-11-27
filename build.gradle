@@ -38,6 +38,7 @@ dependencies {
 	implementation 'com.querydsl:querydsl-jpa'
 	implementation 'com.querydsl:querydsl-apt'
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'org.jsoup:jsoup:1.14.2'
 }
 
 test {
