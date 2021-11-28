@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow"
+      layout:decorate="~{layouts/layout3}">
+
+<head th:replace="fragments/header2::header">
+</head>
+
+<div layout:fragment="content">
+    <div class="hero-wrap hero-bread" style="background-image: url('/images/eum_totalproduct3.jpeg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/"></a></span> <span><b>주문목록</b></span></p>
+                    <h1 class="mb-0 bread">My WishList</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section ftco-cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" th:each="order : ${orders.getContent()}">
+                    <div class="col-md-12">
+                        <b><h4 class="heading" th:text="${order.orderDate}+' 주문'"></h4></b>
+                        <th:block th:if="${order.orderStatus == T(myproject.eumfruit.constant.OrderStatus).ORDER}">
+                            <p><a href="#" class="btn btn-primary py-2 px-3">주문취소</a></p>
+                        </th:block>
+                        <th:block th:unless="${order.orderStatus == T(myproject.eumfruit.constant.OrderStatus).ORDER}">
+                            <p><a href="#" class="btn btn-primary py-2 px-3">취소완료</a></p>
+                        </th:block>
+                    </div>
+                    <div class="cart-list">
+                        <table class="table">
+                            <thead class="thead-primary">
+                            <tr class="text-center">
+                                <b><th>주문번호</th>
+                                <th>구매물품</th>
+                                <th>물품명</th>
+                                <th>가격</th>
+                                <th>수량</th>
+                                <th>결제금액</th></b>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="text-center" th:each="orderItem : ${order.orderItemDtoList}">
+                                <td class="product-remove" th:text="${order.orderId}"></td>
+
+                                <td class="image-prod"><img class="img" th:src="${orderItem.imgUrl}"></td>
+                                <td class="product-name">
+                                    <b><h3 th:text="${orderItem.itemNm}"></h3></b>
+<!--                                    <p>Far far away, behind the word mountains, far from the countries</p>-->
+                                </td>
+
+                                <td class="price" th:text="${orderItem.orderPrice}+'원'"></td>
+
+                                <td class="price" th:text="${orderItem.count}+'개'"></td>
+
+                                <td class="total" th:text="${orderItem.orderPrice}+'원'"></td>
+                            </tr><!-- END TR-->
+
+                            </tbody>
+                        </table>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5" th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li th:classappend="${orders.number eq 0}?'disabled':''"><a th:href="@{'/orders/' + ${orders.number-1}}">&lt;</a></li>
+                        <li th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
+                            <a th:href="@{'/orders/' + ${page-1}}">[[${page}]]</a>
+                        </li>
+<!--                        <li th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">-->
+<!--                            <a th:href="@{'/orders/' + ${orders.number+1}}"></a>-->
+<!--                        </li>-->
+                        <li th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''"><a th:href="@{'/orders/' + ${orders.number+1}}">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+</html>
