@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow"
-      layout:decorate="~{layouts/layout2}">
+      layout:decorate="~{layouts/layout3}">
 
-<head th:replace="fragments/header::header">
-    <title>전체상품 페이지</title>
+<head th:replace="fragments/header2::header">
 </head>
 
 <div layout:fragment="content">
@@ -49,6 +48,7 @@
                             <a href="#" class="mr-2" style="color: #000;"><span style="color: #bbb;" th:text="${item.itemSellStatus}">판매중</span></a>
                         </p>
                     </div>
+                    <input type = "hidden" th:value="${item.price}" id="price" name="price">
                     <p class="price"><span th:text = "${item.price}+원"></span></p>
                     <p th:text="${item.itemDetail}"></p>
                     <div class="row mt-4">
@@ -70,7 +70,7 @@
 	             	<span class="input-group-btn mr-2">
 	                	<div class="quantity">수량</div>
 	            		</span>
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                            <input type="number" id="count" name="count" class="form-control input-number" value="1" min="1" max="100">
                             <span class="input-group-btn ml-2">
 	                 </button>
 	             	</span>
@@ -80,15 +80,15 @@
                           <p style="color: #000;" th:text="${item.stockNumber}+개+' '+주문+' '+가능"></p>
                         </div>
                     </div>
-                    <p><a href="cart.html" class="btn btn-black py-3 px-5">장바구니에 담기</a></p>
+                    <div>
+                        <hr>
+                        <p style="color: #000;"><b>결제금액</b></p>
+                        <h3 name = "totalPrice" id ="totalPrice"></h3>
+                        <p><a class="btn btn-black py-3 px-5" type="button" onclick="order()" style="color:white"><b>주문하기</b></a></p>
+                    </div>
                 </div>
             </div>
         </div>
-
-<!--        <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">-->
-<!--            <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}"-->
-<!--                 th:src="${itemImg.imgUrl}" width="800">-->
-<!--        </div>-->
     </section>
 
     <section class="ftco-section">

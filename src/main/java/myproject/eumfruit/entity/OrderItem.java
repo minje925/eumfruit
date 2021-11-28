@@ -2,6 +2,7 @@ package myproject.eumfruit.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,4 +31,17 @@ public class OrderItem extends BaseEntity {
 //    private LocalDateTime regTime;    // BaseEntity 사용으로 제거해도됨
 //
 //    private LocalDateTime updateTime;
+    public static OrderItem createOrderItem(Item item, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);    // 주문 상품 세팅
+        orderItem.setCount(count);  // 주문 개수 세팅
+        orderItem.setOrderPrice(item.getPrice());   // 현재 시간 기준으로 상품 가격을 주문 가격으로 세팅
+
+        item.removeStock(count);    // 재고 감소
+        return orderItem;
+    }
+    public int getTotalPrice() {
+        // 전체 구매 가격 구하기
+        return orderPrice*count;
+    }
 }
