@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/Thymeleaf")
 public class ThymeleafController {
 
-    @GetMapping(value = "/ex01")
+    @GetMapping(value = "/test")
     public String thymeleafExample01(Model model) {
         model.addAttribute("data", "타임리프 예제입니다.");
-        return "thymeleafEx/thymeleafEx01";
+        return "test/test";
     }
 
 }

@@ -4,7 +4,7 @@
       xmlns:="http://www.w3.org/1999/xhtml" class="agent-pc theme-w theme-wyellow"
       layout:decorate="~{layouts/layout2}">
 
-<head th:replace="fragments/header::header">
+<head th:replace="fragments/header2::header">
     <title>Contact 페이지</title>
 </head>
 
@@ -27,6 +27,7 @@
                 <div class="col-md-6 d-flex" style="height:800px">
                     <div id="map" class="bg-white"></div>
                 </div>
+
                 <div class="col-md-6 py-5 wrap-about pb-md-5">
                     <div class="heading-section-bold mb-4 mt-md-5">
                         <div class="ml-md-0">
@@ -60,22 +61,29 @@
         </div>
     </section>
 
-<!--    <div>-->
-<!--        <h1>지도!</h1>-->
-<!--    </div>-->
-<!--    <div id="map" style="width: 100%; height:480px;">-->
-    <script type="text/javascript">
-        var mapOptions = {
-            center: new naver.maps.LatLng(35.83655768685876, 128.72236174435199),
-            zoom: 17
-        };
-        var map = new naver.maps.Map('map', mapOptions);
-        var marker = new naver.maps.Marker({
-            map: map,
-            title: "이음청과",
-            position: new naver.maps.LatLng(35.83655768685876, 128.72236174435199)
-        });
-    </script>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
+        <script type="text/javascript" src="js/map.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/scrollax.min.js"></script>
+        <script src="js/main.js"></script>
+    </div>
+
+
     </div>
 </div>
+
+
+
+
 </html>

@@ -80,7 +80,7 @@ public class ItemService {
 
     @Transactional(readOnly = true)
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-        System.out.println("쿼리해올게요!!");
+        //System.out.println("쿼리해올게요!!");
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 

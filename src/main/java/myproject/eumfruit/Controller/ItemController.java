@@ -35,9 +35,9 @@ public class ItemController {
     @GetMapping(value="/item/product/set")
     public String setProduct(Model model) {
         List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SET);
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
-        }
+//        for(int i = 0; i < items.size(); i++) {
+//            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
+//        }
         model.addAttribute("items", items);
         return "/item/productSet";
     }
@@ -45,9 +45,9 @@ public class ItemController {
     @GetMapping(value="/item/product/fruits")
     public String fruitProduct(Model model) {
         List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SINGLE);
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
-        }
+//        for(int i = 0; i < items.size(); i++) {
+//            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
+//        }
         model.addAttribute("items", items);
         return "/item/productFruits";
     }
@@ -56,9 +56,9 @@ public class ItemController {
     public String totalProduct(Model model) {
         //List<ProductItemDto> items = itemService.getProductItemList(ItemKind.SINGLE);
         List<ProductItemDto> items = itemService.getProductItemList();
-        for(int i = 0; i < items.size(); i++) {
-            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
-        }
+//        for(int i = 0; i < items.size(); i++) {
+//            System.out.println("가져온 상품 : "+items.get(i).getItemNm()+", "+items.get(i).getPrice()+", "+items.get(i).getImgUrl());
+//        }
         model.addAttribute("items", items);
         return "/item/product";
     }

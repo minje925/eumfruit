@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -61,5 +62,12 @@ public class OrderService {
             orderHistDtos.add(orderHistDto);
         }
         return new PageImpl<OrderHistDto>(orderHistDtos, pageable, totalCount); // 페이지 구현 객체를 생성하여 반환환
+    }
+    
+    @Transactional(readOnly = true)
+    public Order getByOrderId(Long orderId) {
+        Optional<Order> order = orderRepository.findById(orderId);
+        Order result = order.get();
+        return result;
     }
 }

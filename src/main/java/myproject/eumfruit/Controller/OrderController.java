@@ -3,7 +3,10 @@ package myproject.eumfruit.Controller;
 import lombok.RequiredArgsConstructor;
 import myproject.eumfruit.dto.OrderDto;
 import myproject.eumfruit.dto.OrderHistDto;
+import myproject.eumfruit.entity.Order;
 import myproject.eumfruit.service.OrderService;
+import myproject.eumfruit.service.SmsService;
+import net.nurigo.java_sdk.api.Message;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +29,7 @@ import java.util.Optional;
 public class OrderController {
 
     private final OrderService orderService;
+    private final SmsService smsService;    // sms알림 서비스
 
     @PostMapping(value = "/order")
     public @ResponseBody ResponseEntity order(@RequestBody @Valid OrderDto orderDto, BindingResult bindingResult, Principal principal) {
@@ -50,10 +55,13 @@ public class OrderController {
 
         try {
             orderId = orderService.order(orderDto, email);  // 화면으로부터 넘어오는 주문 정보와 회원 이메일 정보를 이용하여 주문 로직 호출
+
         } catch(Exception e) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-
+        Order smsOrder = orderService.getByOrderId(orderId);
+        //System.out.println("smsOrder!!"+smsOrder.getMember().getEmail()+smsOrder.getOrderDate()+smsOrder.getOrderItems().get(0));
+        smsService.sendSms(smsOrder);
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);    // 결과값으로 생성된 주문 번호와 성공했다는 응답코드 반환-
     }
 
