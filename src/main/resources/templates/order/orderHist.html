@@ -26,10 +26,10 @@
                     <div class="col-md-12">
                         <b><h4 class="heading" th:text="${order.orderDate}+' 주문'"></h4></b>
                         <th:block th:if="${order.orderStatus == T(myproject.eumfruit.constant.OrderStatus).ORDER}">
-                            <p><a href="#" class="btn btn-primary py-2 px-3">주문취소</a></p>
+                            <button type = "button" th:value="${order.orderId}" onclick="cancelOrder(this.value)"><a class="btn btn-primary py-2 px-3" style="color:white">주문취소</a></button>
                         </th:block>
                         <th:block th:unless="${order.orderStatus == T(myproject.eumfruit.constant.OrderStatus).ORDER}">
-                            <p><a href="#" class="btn btn-primary py-2 px-3">취소완료</a></p>
+                            <p><a href="#" class="btn btn-primary py-2 px-3" style="background-color:red">취소완료</a></p>
                         </th:block>
                     </div>
                     <div class="cart-list">
@@ -87,23 +87,24 @@
         </div>
     </section>
 
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
-        <script type="text/javascript" src="js/map.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/aos.js"></script>
-        <script src="js/jquery.animateNumber.min.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <script src="js/scrollax.min.js"></script>
-        <script src="js/main.js"></script>
-    </div>
+
+<!--    <div id="" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>-->
+<!--        <script type="text/javascript" src="js/map.js"></script>-->
+<!--        <script src="js/jquery.min.js"></script>-->
+<!--        <script src="js/jquery-migrate-3.0.1.min.js"></script>-->
+<!--        <script src="js/popper.min.js"></script>-->
+<!--        <script src="js/bootstrap.min.js"></script>-->
+<!--        <script src="js/jquery.easing.1.3.js"></script>-->
+<!--        <script src="js/jquery.waypoints.min.js"></script>-->
+<!--        <script src="js/jquery.stellar.min.js"></script>-->
+<!--        <script src="js/owl.carousel.min.js"></script>-->
+<!--        <script src="js/jquery.magnific-popup.min.js"></script>-->
+<!--        <script src="js/aos.js"></script>-->
+<!--        <script src="js/jquery.animateNumber.min.js"></script>-->
+<!--        <script src="js/bootstrap-datepicker.js"></script>-->
+<!--        <script src="js/scrollax.min.js"></script>-->
+<!--        <script src="js/main.js"></script>-->
+<!--    </div>-->
 
 
 </div>

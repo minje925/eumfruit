@@ -1,6 +1,7 @@
 package myproject.eumfruit.Controller;
 
 import lombok.RequiredArgsConstructor;
+import myproject.eumfruit.constant.SmsType;
 import myproject.eumfruit.dto.OrderDto;
 import myproject.eumfruit.dto.OrderHistDto;
 import myproject.eumfruit.entity.Order;
@@ -61,7 +62,7 @@ public class OrderController {
         }
         Order smsOrder = orderService.getByOrderId(orderId);
         //System.out.println("smsOrder!!"+smsOrder.getMember().getEmail()+smsOrder.getOrderDate()+smsOrder.getOrderItems().get(0));
-        smsService.sendSms(smsOrder);
+        smsService.sendSms(smsOrder, SmsType.ORDER);
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);    // 결과값으로 생성된 주문 번호와 성공했다는 응답코드 반환-
     }
 
@@ -76,5 +77,19 @@ public class OrderController {
         model.addAttribute("maxPage", 5);
 
         return "order/orderHist";
+    }
+
+    @PostMapping("/order/{orderId}/cancel")
+    public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderId") Long orderId, Principal principal) {
+        // 자바스크립트에서 취소할 주문 번호는 조작이 가능하므로 다른 사람의 주문을 취소하지 못하도록 주문 취소 권한 검사 실시
+        if(!orderService.validateOrder(orderId, principal.getName())) {
+            return new ResponseEntity<String>("주문 취소 권한이 없습니다.", HttpStatus.FORBIDDEN);
+        }
+        // 주문취소 로직 호출
+        Order smsOrder = orderService.getByOrderId(orderId);
+        smsService.sendSms(smsOrder, SmsType.CANCEL);
+        orderService.cancelOrder(orderId);
+
+        return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 }
