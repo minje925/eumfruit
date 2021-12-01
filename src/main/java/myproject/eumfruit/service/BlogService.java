@@ -31,6 +31,7 @@ public class BlogService {
 
         try {
             obj = (JSONObject) parser.parse(responseBody);
+            System.out.println(obj);
             JSONArray objItems = (JSONArray) obj.get("items");
 
             for(int i = 0; i < objItems.size(); i++) {
